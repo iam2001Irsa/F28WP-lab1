@@ -10,7 +10,7 @@ body {
 header {
     position: sticky;
     top: 0;
-    background-color: #282689;
+    background: linear-gradient(rgb(113, 182, 222), black);
     color: #fff;
     text-align: center;
     padding: 20px;
@@ -56,11 +56,12 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #505050;  /* Darker shade for hover */
+    background-color: #4b4949;  /* Darker shade for hover */
 }
 
 nav a.active{
-    background-color: blue;
+    background: linear-gradient(rgb(89, 168, 214), rgb(14, 85, 126));
+   /* background-color: rgb(90, 182, 216);*/
 }
 
 /* Banner Styles */
@@ -152,7 +153,8 @@ main h3 {
     padding: 18px;
     margin: auto;
     /*changing bg color*/
-    background-color: rgba(155, 215, 235, 0.885);
+    background: linear-gradient(rgba(155, 215, 235, 0.885), grey);
+    
       /*increasing font size*/
     font-size: 20px;
     margin-top: 30px;
