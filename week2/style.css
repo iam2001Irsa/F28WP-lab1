@@ -102,7 +102,13 @@ main h3 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30%;
+}
+.services-container2{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30%;
 }
 
 .service-column {
