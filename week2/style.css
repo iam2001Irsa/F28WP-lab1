@@ -148,13 +148,20 @@ main h3 {
     /*changing bg color*/
     background-color: rgb(173, 169, 169);
       /*increasing font size*/
-    font-size: 25px;
+    font-size: 20px;
     margin-top: 30px;
+
+    border: 1px black;
 }
 
 #cta-heading{
     text-decoration:dotted;
     text-transform: uppercase;
+}
+
+#cta-para{
+    font-size: 25px;
+    font-weight: lighter;
 }
 
 .cta-button {
