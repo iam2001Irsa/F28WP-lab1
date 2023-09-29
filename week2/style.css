@@ -146,16 +146,21 @@ main h3 {
     padding: 18px;
     margin: auto;
     /*changing bg color*/
-    background-color: rgb(121, 118, 118);
+    background-color: rgb(173, 169, 169);
       /*increasing font size*/
     font-size: 25px;
     margin-top: 30px;
 }
 
+#cta-heading{
+    text-decoration:dotted;
+    text-transform: uppercase;
+}
+
 .cta-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: rgb(80, 79, 79);
     color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
