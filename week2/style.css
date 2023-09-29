@@ -142,11 +142,13 @@ main h3 {
 /* Call to Action Styles */
 .cta-container {
     text-align: center;
-    padding: 20px;
+    /*adding appropriate padding and margin*/
+    padding: 18px;
+    margin: auto;
     /*changing bg color*/
     background-color: rgb(121, 118, 118);
       /*increasing font size*/
-    font-size: 35px;
+    font-size: 25px;
     margin-top: 30px;
 }
 
