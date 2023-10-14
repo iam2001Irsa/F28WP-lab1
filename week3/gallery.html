@@ -21,6 +21,32 @@
     }
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <script>
+
+    function plusSlide(n){
+    let i;
+let slides = document.getElementsByClassName("mySlides");
+let dots = document.getElementsByClassName("demo");
+let captionText = document.getElementsById("caption");
+
+if(n>slides.length){slideIndex = 1}
+if(n<1){slideIndex=slides.length}
+
+for(i=0;i<slides.length;i++){
+  slides[i].style.diplay = "none";
+}
+
+for(i=0;i<dots.length;i++){
+dots[i].className = dots[i].className.replace("active", "");
+}
+slides[slideIndex-1].style.display = "block"
+dots[slideIndex+1].className += "active";
+
+captionText.innerHTML = dots[slideIndex-1].alt;
+    }
+  </script> 
+
 </head>
 
 <body>
@@ -45,72 +71,64 @@
       <div class="container">
 
         <div class="mySlides">
-          <div class="numbertext">
-            <img src="images/1.png" alt="Spa Image 1">
-          </div>
+          <div class="numbertext">1/8</div>
+          <img src="images/1.png" alt="gallary slide show" class="slideshow-img">
+
         </div>
 
         <div class="mySlides">
-          <div class="numbertext">
-            <img src="images/2.png" alt="Spa Image 2">
-          </div>
+          <div class="numbertext">2/8</div>
+          <img src="images/2.png" alt="gallary slide show" class="slideshow-img">
+
         </div>
 
         <div class="mySlides">
-          <div class="numbertext">
-            <img src="images/3.png" alt="Spa Image 3">
-          </div>
+          <div class="numbertext">3/8</div>
+          <img src="images/3.png" alt="gallary slide show" class="slideshow-img">
+
         </div>
 
         <div class="mySlides">
-          <div class="numbertext">
-            <img src="images/4.png" alt="Spa Image 4">
-          </div>
+          <div class="numbertext">4/8</div>
+          <img src="images/4.png" alt="gallary slide show" class="slideshow-img">
+
         </div>
 
         <div class="mySlides">
-          <div class="numbertext">
-            <img src="images/5.png" alt="Spa Image 5">
-          </div>
+          <div class="numbertext">5/8</div>
+          <img src="images/5.png" alt="gallary slide show" class="slideshow-img">
+
         </div>
 
         <div class="mySlides">
-          <div class="numbertext">
-            <img src="images/6.png" alt="Spa Image 6">
-          </div>
+          <div class="numbertext">6/8</div>
+          <img src="images/6.png" alt="gallary slide show" class="slideshow-img">
+
         </div>
 
         <div class="mySlides">
-          <div class="numbertext">
-            <img src="images/7.png" alt="Spa Image 7">
-          </div>
+          <div class="numbertext">7/8</div>
+          <img src="images/7.png" alt="gallary slide show" class="slideshow-img">
+
         </div>
 
         <div class="mySlides">
-          <div class="numbertext">
-            <img src="images/8.png" alt="Spa Image 8">
-          </div>
+          <div class="numbertext">8/8</div>
+          <img src="images/8.png" alt="gallary slide show" class="slideshow-img">
+
         </div>
 
-        <a class="prev"></a>
-        <a class="next"></a>
+        <a class="prev" onclick="plusSlide(-1)"></a>
+        <a class="next" onclick="plusSlide(1)"></a>
 
-       <!-- <div class="gallery-container">
-          <img src="images/1.png" alt="Spa Image 1">
-          <img src="images/2.png" alt="Spa Image 2">
-          <img src="images/3.png" alt="Spa Image 3">
-          <img src="images/4.png" alt="Spa Image 4">
-          <img src="images/5.png" alt="Spa Image 5">
-          <img src="images/6.png" alt="Spa Image 6">
-          <img src="images/7.png" alt="Spa Image 7">
-          <img src="images/8.png" alt="Spa Image 7">
-        </div> -->
-        <!-- Call to Action -->
-        <section class="cta-container">
-          <h2>Ready to Experience Our Services?</h2>
-          <p>Join us today and discover the difference we can make for you!</p>
-          <a href="contact.html" class="cta-button">Contact Us Now</a>
-        </section>
+      </div>
+
+      <!-- Call to Action -->
+      <section class="cta-container">
+        <h2>Ready to Experience Our Services?</h2>
+        <p>Join us today and discover the difference we can make for you!</p>
+        <a href="contact.html" class="cta-button">Contact Us Now</a>
+      </section>
 
     </main>
     <footer>

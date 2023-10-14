@@ -52,16 +52,18 @@ nav a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    transition: background-color 0.3s;  /* Smooth transition for hover effect */
+    transition: background-color 0.3s;
+    /* Smooth transition for hover effect */
 }
 
 nav a:hover {
-    background-color: #4b4949;  /* Darker shade for hover */
+    background-color: #4b4949;
+    /* Darker shade for hover */
 }
 
-nav a.active{
+nav a.active {
     background: linear-gradient(rgb(89, 168, 214), rgb(14, 85, 126));
-   /* background-color: rgb(90, 182, 216);*/
+    /* background-color: rgb(90, 182, 216);*/
 }
 
 /* Banner Styles */
@@ -91,7 +93,7 @@ main {
     margin: 2rem auto;
     padding: 2rem;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 main h3 {
@@ -105,7 +107,8 @@ main h3 {
     flex-wrap: wrap;
     gap: 30%;
 }
-.services-container2{
+
+.services-container2 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -154,20 +157,20 @@ main h3 {
     margin: auto;
     /*changing bg color*/
     background: linear-gradient(rgba(155, 215, 235, 0.885), grey);
-    
-      /*increasing font size*/
+
+    /*increasing font size*/
     font-size: 20px;
     margin-top: 30px;
 
     border: 1px solid black;
 }
 
-#cta-heading{
-    text-decoration:underline;
+#cta-heading {
+    text-decoration: underline;
     text-transform: uppercase;
 }
 
-#cta-para{
+#cta-para {
     font-size: 25px;
     font-weight: lighter;
 }
@@ -208,11 +211,13 @@ footer li {
 footer a {
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s;  /* Smooth transition for hover effect */
+    transition: color 0.3s;
+    /* Smooth transition for hover effect */
 }
 
 footer a:hover {
-    color: #b3b3b3;  /* Lighter color on hover */
+    color: #b3b3b3;
+    /* Lighter color on hover */
 }
 
 footer p {
@@ -221,31 +226,36 @@ footer p {
 
 
 
-
+/*Here, will be the Gallery slide show style*/
 * {
     box-sizing: border-box;
-    }
-    .slideshow-img {
+
+}
+
+.slideshow-img {
     vertical-align: middle;
     width: 100%;
-    }
-    
-    /* Position the image container (needed to position the left and right 
+}
+
+/* Position the image container (needed to position the left and right 
 arrows) */
 .container {
     position: relative;
-    }
-    /* Hide the images by default */
-    .mySlides {
+}
+
+/* Hide the images by default */
+.mySlides {
     display: none;
-    }
-    /* Add a pointer when hovering over the thumbnail images */
-    .cursor {
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
     cursor: pointer;
-    }
-    /* Next & previous buttons */
-    .prev,
-    .next {
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
     cursor: pointer;
     position: absolute;
     top: 40%;
@@ -258,24 +268,25 @@ arrows) */
     border-radius: 0 3px 3px 0;
     user-select: none;
     -webkit-user-select: none;
-    }
-    /* Position the "next button" to the right */
-    .next {
+}
+
+/* Position the "next button" to the right */
+.next {
     right: 0;
     border-radius: 3px 0 0 3px;
-    }
-    /* On hover, add a black background color with a little bit see-through */
-    .prev:hover,
-    .next:hover {
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
     background-color: rgba(0, 0, 0, 0.8);
-    }
-    
-    /* Number text (1/3 etc) */
+}
+
+/* Number text (1/3 etc) */
 .numbertext {
     color: #f2f2f2;
     font-size: 12px;
     padding: 8px 12px;
     position: absolute;
     top: 0;
-    }
-    
+}
