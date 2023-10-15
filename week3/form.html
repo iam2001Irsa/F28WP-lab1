@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+
+        function FormSubmission() {
+            const form = document.getElementById("form");
+
+            form.addEventListener("submit", event => {
+                event.preventDefault();
+
+                validateInputs();
+
+                
+
+            })
+
+
+        const validateInputs = () => {
+
+
+            const userName = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPass").value;
+
+            if (userName === "") {
+                document.getElementById("usernameError").innerHTML = "Feild empty";
+            } else {
+                document.getElementById("usernameError").innerHTML = "";
+            }
+
+            if (email === "") {
+                document.getElementById("emailError").innerHTML = "Feild empty";
+
+            } else {
+                document.getElementById("emailError").innerHTML = "";
+                if (email.endsWith(".com") && email.includes("@")) {
+
+                } else {
+                    document.getElementById("emailError").innerHTML = "Incorrect Format";
+                }
+
+            }
+            if (password === "") {
+                document.getElementById("passError").innerHTML = "Feild empty";
+
+            } else {
+                document.getElementById("passError").innerHTML = "";
+                if (password.length >= 8) {
+
+                } else {
+                    document.getElementById("passError").innerHTML = "password too short";
+                }
+
+            }
+            if (confirmPassword === "") {
+                document.getElementById("conpassError").innerHTML = "Feild empty";
+
+            } else {
+                document.getElementById("conpassError").innerHTML = "";
+                if (confirmPassword === password) {
+
+                } else {
+                    document.getElementById("conpassError").innerHTML = "Password does not match";
+                }
+
+            }
+        }
+        }
+    
+
+
+    </script>
+</head>
+
+<body>
+    <form id="form">
+        <h1>Form Validation</h1>
+        <div class="input-control">
+
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="Username"><br>
+            <div id="usernameError" class=".error"></div><br>
+
+            <label for="email">Email</label><br>
+            <input type="text" id="email" name="Email"><br>
+            <div id="emailError" class=".error"> </div><br>
+
+            <label for="password">Password</label><br>
+            <input type="text" id="password" name="password"><br>
+            <div id="passError" class=".error"> </div><br>
+
+            <label for="confirmPass">Confirm password</label><br>
+            <input type="text" id="confirmPass" name="Confirm password"><br>
+            <div id="conpassError" class=".error"> </div><br>
+        </div>
+
+        <div id="demo" class=".error"></div>
+        <button type="submit" value="submit" onclick="FormSubmission()">submit</button>
+
+    </form>
+</body>
+
+</html>
+
+
+
+<!--
+    note:
+    all .error classes turn to success when the last feild is not empty.
+    so technically the error and success is only working properly for the last feild
+    make it work for all
+
+    implement the other error messsages(email format, password = confirm password)
+-->
