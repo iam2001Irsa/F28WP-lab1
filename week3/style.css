@@ -380,6 +380,9 @@ background color, border radius for rounded corners, and font size */
     /* Green border to indicate successful input */
 }
 
+/*this tagets input feilds that are desecdents of 
+input-control.error(element that has both classes input-control and error)*/
+
 /* Style for input fields with class "error": red border */
 .input-control.error input {
     border-color: #ff3860;

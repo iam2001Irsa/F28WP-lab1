@@ -6,72 +6,114 @@
 
     <script>
 
-        function FormSubmission() {
-            const form = document.getElementById("form");
-
-            form.addEventListener("submit", event => {
-                event.preventDefault();
-
-                validateInputs();
-
-                
-
-            })
+        var userCheck = false;
+        var emailCheck = false;
+        var passCheck = false;
+        var ConfirmCheck = false;
 
 
-        const validateInputs = () => {
+        function setSuccess(element) {
+            const parentElement = element.parentElement;
+            parentElement.classList.add("success");
+            parentElement.classList.remove("error");
+        }
+
+        function setError(element) {
+            const parentElement = element.parentElement;
+            parentElement.classList.remove("success");
+            parentElement.classList.add("error");
+        }
 
 
-            const userName = document.getElementById("username").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirmPass").value;
-
-            if (userName === "") {
+        function validateUsername() {
+            const userNameInput = document.getElementById("username").value;
+            const username = document.getElementById("username");
+            if (userNameInput === "") {
                 document.getElementById("usernameError").innerHTML = "Feild empty";
+                setError(username)
             } else {
                 document.getElementById("usernameError").innerHTML = "";
+                userCheck = true;
+                setSuccess(username);
             }
+        }
 
-            if (email === "") {
+        function validateEmail() {
+            const emailInput = document.getElementById("email").value;
+            const email = document.getElementById("email");
+            if (emailInput === "") {
                 document.getElementById("emailError").innerHTML = "Feild empty";
+                setError(email)
 
             } else {
-                document.getElementById("emailError").innerHTML = "";
-                if (email.endsWith(".com") && email.includes("@")) {
-
+                if (emailInput.endsWith(".com") && emailInput.includes("@")) {
+                    document.getElementById("emailError").innerHTML = "";
+                    emailCheck = true;
+                    setSuccess(email);
                 } else {
                     document.getElementById("emailError").innerHTML = "Incorrect Format";
+                    setError(email)
                 }
 
             }
-            if (password === "") {
+        }
+
+
+        function validatePass() {
+            const passwordInput = document.getElementById("password").value;
+            const password = document.getElementById("password")
+
+            if (passwordInput === "") {
                 document.getElementById("passError").innerHTML = "Feild empty";
-
+                setError(password)
             } else {
-                document.getElementById("passError").innerHTML = "";
-                if (password.length >= 8) {
-
+                if (passwordInput.length >= 8) {
+                    document.getElementById("passError").innerHTML = "";
+                    passCheck = true;
+                    setSuccess(password);
                 } else {
                     document.getElementById("passError").innerHTML = "password too short";
+                    setError(password)
                 }
-
             }
-            if (confirmPassword === "") {
+        }
+
+        function validateConfirm() {
+            const password = document.getElementById("password").value;
+            const confirmPasswordInput = document.getElementById("confirmPass").value;
+            const confirmPassword = document.getElementById("confirmPass")
+
+            if (confirmPasswordInput === "") {
                 document.getElementById("conpassError").innerHTML = "Feild empty";
-
+                setError(confirmPassword);
             } else {
-                document.getElementById("conpassError").innerHTML = "";
-                if (confirmPassword === password) {
-
+                if (confirmPasswordInput === password) {
+                    document.getElementById("conpassError").innerHTML = "";
+                    ConfirmCheck = true;
+                    setSuccess(confirmPassword);
                 } else {
                     document.getElementById("conpassError").innerHTML = "Password does not match";
+                    setError(confirmPassword);
                 }
 
             }
         }
+
+        function validationCheck() {
+            const form = document.getElementById("form");
+
+            if (userCheck === false || emailCheck === false || passCheck === false || ConfirmCheck === false) {
+                form.addEventListener("submit", event => {
+                    event.preventDefault();
+
+                })
+
+            } else {
+                form.submit();
+            }
         }
-    
+
+
 
 
     </script>
@@ -82,25 +124,24 @@
         <h1>Form Validation</h1>
         <div class="input-control">
 
-            <label for="username">Username</label><br>
-            <input type="text" id="username" name="Username"><br>
-            <div id="usernameError" class=".error"></div><br>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="Username" onchange="validateUsername()">
+            <div id="usernameError" class="error"></div>
 
-            <label for="email">Email</label><br>
-            <input type="text" id="email" name="Email"><br>
-            <div id="emailError" class=".error"> </div><br>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="Email" onchange="validateEmail()">
+            <div id="emailError" class="error"> </div>
 
-            <label for="password">Password</label><br>
-            <input type="text" id="password" name="password"><br>
-            <div id="passError" class=".error"> </div><br>
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password" onchange="validatePass()">
+            <div id="passError" class="error"> </div>
 
-            <label for="confirmPass">Confirm password</label><br>
-            <input type="text" id="confirmPass" name="Confirm password"><br>
-            <div id="conpassError" class=".error"> </div><br>
+            <label for="confirmPass">Confirm password</label>
+            <input type="text" id="confirmPass" name="Confirm password" onchange="validateConfirm()"><br>
+            <div id="conpassError" class="error"> </div>
         </div>
 
-        <div id="demo" class=".error"></div>
-        <button type="submit" value="submit" onclick="FormSubmission()">submit</button>
+        <button type="submit" value="submit" onclick="validationCheck()">submit</button>
 
     </form>
 </body>
@@ -111,9 +152,7 @@
 
 <!--
     note:
-    all .error classes turn to success when the last feild is not empty.
-    so technically the error and success is only working properly for the last feild
-    make it work for all
-
-    implement the other error messsages(email format, password = confirm password)
+    the outline isnt working is bcuz, the error css style meant for 
+    error class is overriding the error class added to input for border 
+    color change(which isnt even applying at all)
 -->
