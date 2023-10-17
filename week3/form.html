@@ -35,7 +35,7 @@
         </div>
 
         <!--submit button-->
-        <button type="submit" onclick="validationCheck()">submit</button>
+        <button type="submit" value="submit" onclick="validationCheck()">submit</button>
     </form>
 
     <script>
@@ -136,17 +136,17 @@
 
         function validationCheck() {
             const form = document.getElementById("form");
-
+            //checks if inputs are not valid
             if (userCheck === false || emailCheck === false || passCheck === false || ConfirmCheck === false) {
+                //preventing the form from submiting
                 form.addEventListener("submit", event => {
                     event.preventDefault();
+                    //validating
                     validateUsername();
                     validateEmail();
-                    validatePass()
+                    validatePass();
                     validateConfirm();
                 })
-            } else {
-                form.submit();
             }
         }
 
