@@ -86,8 +86,8 @@
           <img src="images/8.png" alt="gallary slide show" class="slideshow-img">
         </div>
 
-        <a class="prev" onclick="nextprev(-1)">Prev</a>
-        <a class="next" onclick="nextprev(1)">Next</a>
+        <a class="prev" onclick="nextprev(-1)">&#10094;</a>
+        <a class="next" onclick="nextprev(1)">&#10095;</a>
 
       </div>
 
@@ -124,6 +124,7 @@
     slides[currentSlide].style.display = "block";
 
     function nextprev(n) {
+
       //removing the current slide to display the next one
       if (n > 0) {
         slides[currentSlide].style.display = "none";
@@ -146,9 +147,9 @@
           currentSlide = totalSlides - 1;
         } 
         slides[currentSlide].style.display = "block";
-
       }
     }
+
   </script>
 
 

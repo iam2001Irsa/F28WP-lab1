@@ -226,7 +226,6 @@ footer p {
 
 
 
-
 /*Here, will be the Gallery slide show style*/
 * {
     box-sizing: border-box;
@@ -259,7 +258,7 @@ arrows) */
 .next {
     cursor: pointer;
     position: absolute;
-    top: 40%;
+    top: 50%;
     width: auto;
     padding: 16px;
     margin-top: -50px;
@@ -291,8 +290,6 @@ arrows) */
     position: absolute;
     top: 0;
 }
-
-
 
 
 
@@ -373,9 +370,6 @@ background color, border radius for rounded corners, and font size */
     border-color: #09c372;
     /* Green border to indicate successful input */
 }
-
-/*this tagets input feilds that are desecdents of 
-input-control.error(element that has both classes input-control and error)*/
 
 /* Style for input fields with class "error": red border */
 .input-control.error input {
