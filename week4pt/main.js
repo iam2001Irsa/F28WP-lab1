@@ -5,7 +5,7 @@ var cityContainer = document.getElementById("city-info");
 var btn = document.getElementById("btn");
 btn.addEventListener("click", function(){
 var ourRequest = new XMLHttpRequest();
-ourRequest.open('GET', 'https://iam2001Irsa.github.io/week4/cities1.json');
+ourRequest.open('GET', 'https://iam2001Irsa.github.io/week4pt1/cities1.json');
 ourRequest.onload = function() {
 var ourData = JSON.parse(ourRequest.responseText);
 renderHTML(ourData);
