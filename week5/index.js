@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
+const path = require('path');
 
 //basically follows the path mentioned and reads the file
 dotenv.config({path:'./.env'}); //./ means that its in root directory
@@ -21,13 +22,24 @@ db.connect((error) => {
     if(error){
         console.log(error);
     }else{
-        console.log('mysql connected...')
+        console.log('mysql connected...');
     }
-})
+});
+
+
+const publicDirectory = path.join(__dirname,'./public');
+app.use(express.static(publicDirectory));
+//using handlebars as view engine for rendering templates
+app.set('view engine', 'hbs');
 
 //executes when main page is accessed
 app.get("/", (req, res) =>{
-    res.send("<h1>HOME PAGE</h1>")
+    res.render("index");
+});
+
+//executes when register page is accessed
+app.get("/register", (req, res) =>{
+    res.render("register");
 });
 
 //starts the server
