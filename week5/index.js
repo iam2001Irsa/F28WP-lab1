@@ -31,16 +31,11 @@ const publicDirectory = path.join(__dirname,'./public');
 app.use(express.static(publicDirectory));
 //using handlebars as view engine for rendering templates
 app.set('view engine', 'hbs');
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
-//executes when main page is accessed
-app.get("/", (req, res) =>{
-    res.render("index");
-});
-
-//executes when register page is accessed
-app.get("/register", (req, res) =>{
-    res.render("register");
-});
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
 //starts the server
 app.listen(port, () =>{
