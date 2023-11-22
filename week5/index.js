@@ -2,6 +2,8 @@ const express = require('express');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 const path = require('path');
+////////////////////
+const cookieParser = require('cookie-parser');
 
 //basically follows the path mentioned and reads the file
 dotenv.config({path:'./.env'}); //./ means that its in root directory
@@ -32,7 +34,8 @@ app.use(express.static(publicDirectory));
 //using handlebars as view engine for rendering templates
 app.set('view engine', 'hbs');
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));  //she put false in last vid
+app.use(cookieParser());
 
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
