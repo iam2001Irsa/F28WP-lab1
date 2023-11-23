@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 const path = require('path');
 ////////////////////
 const cookieParser = require('cookie-parser');
+const { isLogged } = require('./controllers/auth');
+
 
 //basically follows the path mentioned and reads the file
 dotenv.config({path:'./.env'}); //./ means that its in root directory
@@ -34,7 +36,7 @@ app.use(express.static(publicDirectory));
 //using handlebars as view engine for rendering templates
 app.set('view engine', 'hbs');
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));  //she put false in last vid
+app.use(express.urlencoded({extended: false}));  //she put false in last vid
 app.use(cookieParser());
 
 app.use('/', require('./routes/pages'));
@@ -44,3 +46,5 @@ app.use('/auth', require('./routes/auth'));
 app.listen(port, () =>{
     console.log(`server started on port ${port}`);
 });
+
+
