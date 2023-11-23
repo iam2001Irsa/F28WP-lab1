@@ -9,21 +9,21 @@ const db = mysql.createConnection({
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE
-})
+});
 
 exports.register = (req, res) => {
     console.log(req.body);
 
     const { name, email, password, passwordConfirm } = req.body;
-    db.query('SELECT email FROM users WHERE email =?', [email], async (error, result) => {
+    db.query('SELECT email FROM users WHERE email =?', [email], async (error, results) => {
         if (error) {
             console.log(error);
         }
-        if (result.length > 0) {
-           return res.render('register', {
-    message: 'This email is already taken..'
-});
 
+        if (results && results.length > 0) {
+            return res.render('register', {
+                message: 'This email is already taken..'
+            });
         } else if (password !== passwordConfirm) {
             return res.render('register', {
                 message: 'Password do not match'
@@ -54,19 +54,17 @@ exports.login = async (req, res) => {
         if (!email || !password) {
             return res.status(400).render('login', {
                 message: 'Please provide both email and password'
-            });
+            })
         }
 
         db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
             console.log(results);
-
-            if (results.length === 0 || !results[0].password || !(await bcrypt.compare(password, results[0].password)))
-            {
+        
+            if (!results || !(await bcrypt.compare(password, results[0].password))) {
                 return res.status(401).render('login', {
                     message: 'Incorrect email or password'
                 });
-            }
-             else {
+            } else {
                 const id = results[0].id;
 
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -83,7 +81,7 @@ exports.login = async (req, res) => {
                 res.cookie('jwt', token, cookieOptions);
                 res.status(200).redirect("/profile");
             }
-        });
+        })
     } catch (error) {
         console.log(error);
     }
@@ -95,7 +93,7 @@ exports.logout = async (req, res) => {
         expires: new Date(Date.now() + 2 * 1000), // Expires in 2 seconds
         httponly: true
     });
-    
+
     res.status(200).redirect('/')
 }
 
@@ -110,17 +108,17 @@ exports.isLogged = async (req, res, next) => {
 
             db.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error, result) => {
                 console.log(result);
-            
+
                 if (!result) {
                     return next();
                 }
-            
+
                 req.user = result[0];
                 console.log("user is");
                 console.log(req.user);
                 return next();
             });
-            
+
         } catch (error) {
             console.log(error);
             return next();

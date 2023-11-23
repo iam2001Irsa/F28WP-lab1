@@ -5,8 +5,8 @@ authController = require('../controllers/auth');
 // Executes when the main page is accessed
 router.get('/', (req, res) => {
     res.render('index',{
-        user: req.user
-    });
+       user: req.user
+   });
 });
 
 // Executes when the register page is accessed
