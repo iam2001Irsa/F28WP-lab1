@@ -47,11 +47,12 @@ exports.register = (req, res) => {
 
 };
 
-exports.login = async (req, res) => {
-    try{
-        const {email, password} = req.body;
 
-        if(!email || !password){
+exports.login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email || !password) {
             return res.status(400).render('login', {
                 message: 'Please provide an email and password'
             })
@@ -59,11 +60,11 @@ exports.login = async (req, res) => {
 
         db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
             console.log(results);
-            if(!results || !(await bcrypt.compare(password, results[0].password))){
+            if (!results || !(await bcrypt.compare(password, results[0].password))) {
                 res.status(401).render('login', {
                     message: 'Email or password is incorrect'
                 })
-            }else{
+            } else {
                 const id = results[0].id;
 
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -74,7 +75,7 @@ exports.login = async (req, res) => {
 
                 const cookieOptions = {
                     expires: new DataTransfer(
-                        Data.now() + process.env.JWT_COOKIE_EXPIRES *24*60*60*1000
+                        Data.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
                     ),
                     httponly: true
                 }
@@ -83,7 +84,7 @@ exports.login = async (req, res) => {
                 res.status(200).redirect("/profile");
             }
         })
-    }catch(error){
+    } catch (error) {
         console.log(error);
     }
 }
